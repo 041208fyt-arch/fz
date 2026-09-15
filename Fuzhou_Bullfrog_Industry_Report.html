@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>福建福州水煮蛙产业深度调研与食安溯源报告</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
+                        },
+                        danger: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                        },
+                        dark: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar and minor aesthetic enhancements */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-dark-950 text-slate-100 font-sans antialiased min-h-screen">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-800 bg-dark-950/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-bold text-xl">
+                        蛙
+                    </div>
+                    <div>
+                        <span class="text-lg font-bold tracking-tight text-white">福建福州水煮蛙产业调研</span>
+                        <span class="ml-2 text-xs px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">食品安全与供应链调查</span>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-6 text-sm font-medium text-slate-300">
+                    <a href="#summary" class="hover:text-emerald-400 transition-colors">核心结论</a>
+                    <a href="#supply-chain" class="hover:text-emerald-400 transition-colors">供应链地图</a>
+                    <a href="#antibiotics" class="hover:text-emerald-400 transition-colors">抗生素与食安</a>
+                    <a href="#traceability" class="hover:text-emerald-400 transition-colors">溯源漏洞</a>
+                    <a href="#profit" class="hover:text-emerald-400 transition-colors">暴利揭秘</a>
+                    <a href="#calculator" class="hover:text-emerald-400 transition-colors">利润测算器</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- Hero & Key Indicators Section -->
+        <section id="summary" class="space-y-6">
+            <div class="p-8 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/40 border border-slate-800 shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="max-w-3xl space-y-4 relative z-10">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                        <span>2025-2026 最新行业舆情与监管抽检数据集成</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+                        舌尖上的“隐患”：福州水煮蛙产业<br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">供应链、抗生素滥用与利润结构深度拆解</span>
+                    </h1>
+                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                        水煮牛蛙（美蛙）凭借麻辣鲜香的口感与高蛋白质标签，在福州餐饮市场（涵盖台江万达、东二环泰禾、三坊七巷周边及夜市大排档）风靡一时。然而，高密度养殖下的“抗生素依赖”、供应链溯源的“纸面流转”、以及餐饮端高毛利与养殖端薄利的风险不对称，构成了该产业的复杂真实图景。
+                    </p>
+                </div>
+
+                <!-- Metric Cards -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-slate-800/80">
+                    <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                        <div class="text-xs text-slate-400 mb-1">全国牛蛙餐饮产值</div>
+                        <div class="text-2xl font-bold text-emerald-400">~480亿 - 600亿</div>
+                        <div class="text-[11px] text-slate-500 mt-1">全国主题门店超 4 万家</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                        <div class="text-xs text-slate-400 mb-1">暗访公益抽检不合格率</div>
+                        <div class="text-2xl font-bold text-red-400">41.2%</div>
+                        <div class="text-[11px] text-slate-500 mt-1">恩诺沙星超标最高达 5 倍+</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                        <div class="text-xs text-slate-400 mb-1">福州餐企菜品平均毛利率</div>
+                        <div class="text-2xl font-bold text-amber-400">60% - 68%</div>
+                        <div class="text-[11px] text-slate-500 mt-1">单店净利率约 12% - 18%</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                        <div class="text-xs text-slate-400 mb-1">核心违规兽药残留</div>
+                        <div class="text-2xl font-bold text-purple-400">恩诺沙星/呋喃唑酮</div>
+                        <div class="text-[11px] text-slate-500 mt-1">休药期缺失与运输加药</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Supply Chain Analysis -->
+        <section id="supply-chain" class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                        一、福州水煮蛙供应链图谱与链路拆解
+                    </h2>
+                    <p class="text-slate-400 text-sm">从粤浙闽养殖场到福州餐桌的“三级流转”体系</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Node 1: Breeding -->
+                <div class="glass-panel p-6 rounded-xl space-y-3 relative border-l-4 border-l-emerald-500">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400">源头养殖端</span>
+                        <span class="text-xs text-slate-500">主要产区：漳州/广东/湖南</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">1. 高密度高压养殖</h3>
+                    <p class="text-sm text-slate-300">
+                        福建本地牛蛙养殖多集中在漳州（如东山县及周边）、龙岩等地，同时大量自广东潮汕、湖南引入。养殖户普遍采用“精养高密度土池”，亩产可高达 <strong class="text-emerald-400">2万 - 3万斤</strong>。
+                    </p>
+                    <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+                        <li>生态痛点：水体富营养化严重、交叉感染率高</li>
+                        <li>高发疾病：脑膜炎、歪头病、红腿病、烂皮病</li>
+                        <li>药杀诱因：为防全池覆灭，周期性投喂抗生素</li>
+                    </ul>
+                </div>
+
+                <!-- Node 2: Wholesale & Logistics -->
+                <div class="glass-panel p-6 rounded-xl space-y-3 relative border-l-4 border-l-amber-500">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded bg-amber-500/10 text-amber-400">中游流通与初加工</span>
+                        <span class="text-xs text-slate-500">集散地：南通海鲜市场/华威市场</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">2. 拼批收购与运增加药</h3>
+                    <p class="text-sm text-slate-300">
+                        活蛙通过层层经纪人（蛙贩子）收购，不同小农户的牛蛙混装运输。到达福州批发市场（如华威海鲜批发市场、南通物流园）或集中冷链加工厂（如东山供应链企业）。
+                    </p>
+                    <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+                        <li>活蛙运输：“浸泡抗生素/抗应激药”降低运输死亡率</li>
+                        <li>冷冻加工：去头去皮冰鲜蛙（三级规格：2-3两, 3-4两, 4-5两）</li>
+                        <li>“洗白”风险：混批装箱，原塘抽检报告被套用</li>
+                    </ul>
+                </div>
+
+                <!-- Node 3: Restaurant Terminal -->
+                <div class="glass-panel p-6 rounded-xl space-y-3 relative border-l-4 border-l-blue-500">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded bg-blue-500/10 text-blue-400">终端餐饮消费</span>
+                        <span class="text-xs text-slate-500">福州各大商圈与大排档</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">3. 水煮/美蛙烹饪消杀</h3>
+                    <p class="text-sm text-slate-300">
+                        福州餐饮端分为两大阵营：连锁品牌（如蛙来哒、蛙小侠、美蛙鱼头专营店）与本地中小型川菜馆/夜宵大排档。高油高辣掩盖食材底味。
+                    </p>
+                    <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+                        <li>活蛙现杀：主打“鲜嫩”，但风险集中在休药期违规</li>
+                        <li>冷冻蛙腿：成本极低，多用于走量外卖与廉价水煮蛙</li>
+                        <li>高温烹饪：可杀灭寄生虫与细菌，但<strong class="text-red-400">无法消除化学药残</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Food Safety & Antibiotics Analysis -->
+        <section id="antibiotics" class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                        二、食品安全核心焦点：“抗生素蛙”真相调查
+                    </h2>
+                    <p class="text-slate-400 text-sm">剖析全国及福建本地抽检违规数据与兽药残留成因</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Left Chart: Failure rates & exceedance values -->
+                <div class="lg:col-span-7 glass-panel p-6 rounded-xl space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-white">牛蛙样品兽药残留检测异常分布 (结合2025-2026行业公益/监管抽检数据)</h3>
+                        <span class="text-xs text-slate-400">单位: % / 样本占比</span>
+                    </div>
+                    <div class="h-64">
+                        <canvas id="drugChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed bg-slate-900/60 p-3 rounded-lg border border-slate-800">
+                        <strong class="text-amber-300">数据源说明：</strong> 综合澎湃新闻影子调查队、公益机构“自然田”2025-2026年针对福建漳州东山供应链及电商/外卖平台送检数据，以及福建省市场监管局对餐饮环节牛蛙抽检通报。51批次抽检中超40%存在抗生素超标，最严重样本恩诺沙星达 <strong>509 μg/kg</strong>（国标限量为 100 μg/kg，超标 5 倍以上）。
+                    </p>
+                </div>
+
+                <!-- Right Detail Cards: Drug breakdown -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="glass-panel p-5 rounded-xl border-l-4 border-l-red-500">
+                        <div class="flex justify-between items-center mb-1">
+                            <h4 class="font-bold text-red-400">1. 恩诺沙星 (Enrofloxacin)</h4>
+                            <span class="text-xs px-2 py-0.5 rounded bg-red-500/20 text-red-300">高发超标项</span>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            <strong>广谱喹诺酮类抗菌药。</strong> 养殖户常用于治疗细菌性败血症。若未过“休药期”即出塘上市，残留超标会导致人体耐药性增加，长期摄入可能引起肠胃不适或肝肾损伤。
+                        </p>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-xl border-l-4 border-l-purple-500">
+                        <div class="flex justify-between items-center mb-1">
+                            <h4 class="font-bold text-purple-400">2. 呋喃唑酮 (Furazolidone)</h4>
+                            <span class="text-xs px-2 py-0.5 rounded bg-purple-500/20 text-purple-300">明令禁止兽药</span>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            <strong>硝基呋喃类致癌药物。</strong> 我国早已明令禁止在食品动物养殖中使用。然而个别不法养殖户或违规供应链厂商为降低病死率，仍偷偷添加，其代谢物 AOZ 在动物体内残留时间极长。
+                        </p>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-xl border-l-4 border-l-amber-500">
+                        <div class="flex justify-between items-center mb-1">
+                            <h4 class="font-bold text-amber-400">3. 氟苯尼考与磺胺类</h4>
+                            <span class="text-xs px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">预防性滥用</span>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            <strong>防不胜防的“防病药包”。</strong> 在从池塘抓捕到福州餐饮后厨前的“长途运输”期间（如长途活体网袋运输），为了防挤压感染，水体中常混入此类抗生素浸泡。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Traceability Blind Spots -->
+        <section id="traceability" class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-teal-500"></span>
+                        三、蛙类溯源体系：纸面合规与现实盲区
+                    </h2>
+                    <p class="text-slate-400 text-sm">为什么有“检疫合格证”餐桌上依然会出现“抗生素蛙”？</p>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-xl border border-slate-800 space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                    <!-- Step 1 -->
+                    <div class="space-y-2 p-4 rounded-lg bg-slate-900/50 border border-slate-800">
+                        <div class="text-emerald-400 font-bold text-sm">漏洞 1：源头“套证”与拼批</div>
+                        <h4 class="text-white font-semibold text-base">“一证覆盖多池/多户”</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            开具《产地检疫合格证明》时，往往只抽检一两个池塘。但中游收购商会收集十几户散农的牛蛙混装，未检测池塘的“违规药残蛙”借此顺利取得合法身份。
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="space-y-2 p-4 rounded-lg bg-slate-900/50 border border-slate-800">
+                        <div class="text-amber-400 font-bold text-sm">漏洞 2：快检局限性</div>
+                        <h4 class="text-white font-semibold text-base">“胶体金快检卡假阴性”</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            批发市场及中型餐企进货验收采用“快速检测试纸”，对低浓度超标或新型复合代谢物敏感度不足，只有精密的液相色谱-质谱联用（LC-MS/MS）才能精准捕获，但检测周期需3-5天，难以匹配活鲜消费。
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="space-y-2 p-4 rounded-lg bg-slate-900/50 border border-slate-800">
+                        <div class="text-red-400 font-bold text-sm">漏洞 3：餐饮后厨索证留样形同虚设</div>
+                        <h4 class="text-white font-semibold text-base">“凭证不凭蛙”</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            福州部分中小型水煮蛙店在接受市场监管检查时，能拿出批发商提供的检测报告，但该报告往往是数周前某一批次的复印件，与当天后厨锅里煮的蛙无直接对应关系。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/20 text-xs text-emerald-200 leading-relaxed">
+                    <strong class="text-emerald-400">破局之道（福州试点进展）：</strong> 近年来福建推行“福建省食品安全信息追溯平台”（闽食安），要求牛蛙等水产品实行“一码通行”。部分头部连锁品牌（如蛙来哒）开始与具备定量检测能力的第三方机构合作，建立“批批检测+凭码入库”机制。
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Is it a Windfall Industry? Profit Breakdown -->
+        <section id="profit" class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                        四、商业模型揭秘：水煮蛙是“暴利产业”吗？
+                    </h2>
+                    <p class="text-slate-400 text-sm">拆解福州一家标准水煮蛙门店（以一份售价128元水煮蛙为例）的真实成本与利润率</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Profit breakdown chart -->
+                <div class="lg:col-span-6 glass-panel p-6 rounded-xl space-y-4">
+                    <h3 class="font-bold text-white">福州标准水煮蛙（单份128元/约2.5斤活蛙）成本构成</h3>
+                    <div class="h-64">
+                        <canvas id="profitChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Strategic Insights -->
+                <div class="lg:col-span-6 glass-panel p-6 rounded-xl space-y-4 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-white text-lg mb-2">“高菜品毛利” vs “低综合净利”的错觉</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed space-y-2">
+                            外界普遍认为水煮蛙是“暴利”，主要源于其<strong class="text-amber-400">极高的菜品毛利率（60% - 70%）</strong>：
+                        </p>
+                        <div class="mt-3 text-xs text-slate-300 space-y-2">
+                            <div class="p-2.5 rounded bg-slate-900/80 border border-slate-800">
+                                <span class="text-emerald-400 font-bold">原材料成本低：</span> 活蛙批发价常年在 8 - 14元/斤 浮动。一份水煮蛙用蛙 2.5斤，牛蛙原料成本仅需约 25 - 30元；加上特制麻辣底油、配菜，总食材成本仅约 40 - 45元。
+                            </div>
+                            <div class="p-2.5 rounded bg-slate-900/80 border border-slate-800">
+                                <span class="text-amber-400 font-bold">真正吞噬利润的隐形开支：</span> 福州核心商圈（如东二环泰禾、仓山万达）高昂的商铺租金、重度依赖的平台外卖抽成（18%-23%）、营销推广（抖音/美团达人探店）以及油烟环保设备运维。
+                            </div>
+                            <div class="p-2.5 rounded bg-slate-900/80 border border-slate-800">
+                                <span class="text-red-400 font-bold">真正的“暴利”在哪里？</span> 暴利并不在合规经营的餐饮终端，而在于<strong class="text-red-300">地下违规“黑养殖场”与药物套利中介</strong>——通过高密度投药降低死亡率，成本比生态合规养殖低 30%-40%，以此获取超额利润。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Interactive Calculator -->
+        <section id="calculator" class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-purple-500"></span>
+                        五、交互式工具：水煮蛙单店利润与成本测算器
+                    </h2>
+                    <p class="text-slate-400 text-sm">模拟福州水煮蛙餐企在不同采购价与客单价下的盈利模型</p>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-xl border border-slate-800 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Controls -->
+                <div class="lg:col-span-6 space-y-5">
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <label class="text-slate-300">牛蛙批发采购价 (元/斤)</label>
+                            <span id="frogPriceVal" class="text-emerald-400">11.0 元/斤</span>
+                        </div>
+                        <input type="range" id="frogPrice" min="6" max="20" step="0.5" value="11" 
+                               class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                        <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+                            <span>6元 (丰产低价)</span>
+                            <span>11元 (正常均价)</span>
+                            <span>20元 (减产高价)</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <label class="text-slate-300">水煮蛙终端售价 (元/份)</label>
+                            <span id="menuPriceVal" class="text-amber-400">128 元</span>
+                        </div>
+                        <input type="range" id="menuPrice" min="68" max="198" step="2" value="128" 
+                               class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <label class="text-slate-300">单份牛蛙用量 (斤/份)</label>
+                            <span id="frogWeightVal" class="text-blue-400">2.5 斤</span>
+                        </div>
+                        <input type="range" id="frogWeight" min="1.5" max="4.0" step="0.1" value="2.5" 
+                               class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <label class="text-slate-300">底料+酱油+配菜成本 (元/份)</label>
+                            <span id="sauceCostVal" class="text-purple-400">15.0 元</span>
+                        </div>
+                        <input type="range" id="sauceCost" min="8" max="30" step="1" value="15" 
+                               class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-purple-500">
+                    </div>
+                </div>
+
+                <!-- Output Display -->
+                <div class="lg:col-span-6 flex flex-col justify-center bg-slate-900/90 p-6 rounded-xl border border-slate-800 space-y-4">
+                    <h4 class="text-sm font-bold text-slate-300 border-b border-slate-800 pb-2">测算结果 (单份菜品)</h4>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-3 rounded-lg bg-slate-950 border border-slate-800">
+                            <div class="text-[11px] text-slate-400">总食材成本 (COGS)</div>
+                            <div id="totalCogs" class="text-xl font-bold text-red-400">42.5 元</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-950 border border-slate-800">
+                            <div class="text-[11px] text-slate-400">菜品毛利润</div>
+                            <div id="grossProfit" class="text-xl font-bold text-emerald-400">85.5 元</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-950 border border-slate-800">
+                            <div class="text-[11px] text-slate-400">菜品毛利率</div>
+                            <div id="grossMargin" class="text-xl font-bold text-amber-400">66.8%</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-950 border border-slate-800">
+                            <div class="text-[11px] text-slate-400">预估扣除房租人工后净利(以15%计)</div>
+                            <div id="estimatedNet" class="text-xl font-bold text-teal-400">19.2 元</div>
+                        </div>
+                    </div>
+
+                    <div id="verdictBadge" class="p-3 rounded-lg text-xs leading-relaxed font-medium bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                        判定: 处于健康高毛利区间。餐饮端具备充足降价促销空间，但必须留足质量管控与检测成本。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Actionable Recommendations -->
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+                六、治理对策与福州消费者食用建议
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Regulatory Advice -->
+                <div class="glass-panel p-6 rounded-xl border-t-2 border-t-emerald-500 space-y-3">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <span>🏛️</span> 给福建/福州监管部门的建议
+                    </h3>
+                    <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside leading-relaxed">
+                        <li><strong>源头与快检联动：</strong> 在漳州东山等主产区及福州南通批发市场建立“快速定量检测”卡口，对恩诺沙星进行高频抽检。</li>
+                        <li><strong>推动标准化冷链“半成品蛙”：</strong> 鼓励推行“厂屠宰+急速冻鲜+批批带码”模式，取代风险难以控制的散装活蛙跨区域转运。</li>
+                        <li><strong>严惩违规添加：</strong> 建立“养殖户-经纪人-餐饮店”黑名单协同惩戒机制，提高对禁用兽药（如呋喃唑酮）的刑事打击力度。</li>
+                    </ul>
+                </div>
+
+                <!-- Consumer Tips -->
+                <div class="glass-panel p-6 rounded-xl border-t-2 border-t-amber-500 space-y-3">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <span>🍲</span> 福州市民消费避坑指南
+                    </h3>
+                    <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside leading-relaxed">
+                        <li><strong>认准“溯源码”与资质：</strong> 优先选择明厨亮灶、公示牛蛙检测合格证明的品牌连锁餐厅。</li>
+                        <li><strong>警惕“过分便宜”的自助/小店：</strong> 低于20元/斤的成品水煮蛙，可能采用存疑的淘汰蛙或超标低价蛙。</li>
+                        <li><strong>熟透食用防寄生虫：</strong> 确保水煮蛙肉质煮熟透（肉骨易分离），切忌追求过分“生嫩”而缩减加热时间。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-dark-950 py-8 mt-12 text-center text-xs text-slate-500">
+        <p>福建福州水煮蛙（美蛙）产业与食品安全深度调研报告 | 数据整合自 2025-2026 年福建省市场监管局通报及澎湃调查等公开资料</p>
+    </footer>
+
+    <script>
+        // Initialize Chart.js visual graphics when DOM is fully loaded
+        window.addEventListener('load', function() {
+            // Chart 1: Antibiotics exceedance data
+            const ctxDrug = document.getElementById('drugChart').getContext('2d');
+            new Chart(ctxDrug, {
+                type: 'bar',
+                data: {
+                    labels: ['合格批次', '恩诺沙星超标', '氟苯尼考超标', '含有禁用药(呋喃类)', '其他兽药残留'],
+                    datasets: [{
+                        label: '样本占比 (%)',
+                        data: [58.8, 23.5, 9.8, 4.0, 3.9],
+                        backgroundColor: [
+                            'rgba(34, 197, 94, 0.7)',
+                            'rgba(239, 68, 68, 0.8)',
+                            'rgba(245, 158, 11, 0.8)',
+                            'rgba(168, 85, 247, 0.8)',
+                            'rgba(100, 116, 139, 0.7)'
+                        ],
+                        borderColor: [
+                            '#22c55e',
+                            '#ef4444',
+                            '#f59e0b',
+                            '#a855f7',
+                            '#64748b'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.raw + '% 占比';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: { color: '#94a3b8' },
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' }
+                        },
+                        x: {
+                            ticks: { color: '#94a3b8' },
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+
+            // Chart 2: Profit structure breakdown pie chart
+            const ctxProfit = document.getElementById('profitChart').getContext('2d');
+            new Chart(ctxProfit, {
+                type: 'doughnut',
+                data: {
+                    labels: ['牛蛙主料成本', '底料/油脂/配菜', '房租与水电', '人工与服务', '平台抽成/营销', '门店纯利润'],
+                    datasets: [{
+                        data: [21.5, 11.7, 18.0, 16.5, 17.3, 15.0],
+                        backgroundColor: [
+                            '#ef4444',
+                            '#f59e0b',
+                            '#3b82f6',
+                            '#8b5cf6',
+                            '#ec4899',
+                            '#10b981'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                color: '#cbd5e1',
+                                font: { size: 11 }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Calculator logic
+            const frogPriceInput = document.getElementById('frogPrice');
+            const menuPriceInput = document.getElementById('menuPrice');
+            const frogWeightInput = document.getElementById('frogWeight');
+            const sauceCostInput = document.getElementById('sauceCost');
+
+            function updateCalculator() {
+                const frogPrice = parseFloat(frogPriceInput.value);
+                const menuPrice = parseFloat(menuPriceInput.value);
+                const frogWeight = parseFloat(frogWeightInput.value);
+                const sauceCost = parseFloat(sauceCostInput.value);
+
+                // Update UI text labels
+                document.getElementById('frogPriceVal').innerText = frogPrice.toFixed(1) + ' 元/斤';
+                document.getElementById('menuPriceVal').innerText = menuPrice.toFixed(0) + ' 元';
+                document.getElementById('frogWeightVal').innerText = frogWeight.toFixed(1) + ' 斤';
+                document.getElementById('sauceCostVal').innerText = sauceCost.toFixed(1) + ' 元';
+
+                // Calculations
+                const frogRawCost = frogPrice * frogWeight;
+                const totalCogs = frogRawCost + sauceCost;
+                const grossProfit = menuPrice - totalCogs;
+                const grossMargin = (grossProfit / menuPrice) * 100;
+                const estimatedNet = menuPrice * 0.15; // 15% estimated net margin
+
+                // Display Output
+                document.getElementById('totalCogs').innerText = totalCogs.toFixed(1) + ' 元';
+                document.getElementById('grossProfit').innerText = grossProfit.toFixed(1) + ' 元';
+                document.getElementById('grossMargin').innerText = grossMargin.toFixed(1) + '%';
+                document.getElementById('estimatedNet').innerText = estimatedNet.toFixed(1) + ' 元';
+
+                // Dynamic Verdict
+                const verdictElem = document.getElementById('verdictBadge');
+                if (grossMargin > 65) {
+                    verdictElem.className = "p-3 rounded-lg text-xs leading-relaxed font-medium bg-emerald-500/10 text-emerald-300 border border-emerald-500/20";
+                    verdictElem.innerHTML = "<strong>高毛利区间 (" + grossMargin.toFixed(1) + "%)：</strong> 餐饮端具备极高定价溢价与营销弹性。但若原材料价格过低，需高度关注供应商是否为了低价而使用“抗生素超标蛙”。";
+                } else if (grossMargin >= 50) {
+                    verdictElem.className = "p-3 rounded-lg text-xs leading-relaxed font-medium bg-amber-500/10 text-amber-300 border border-amber-500/20";
+                    verdictElem.innerHTML = "<strong>中等毛利区间 (" + grossMargin.toFixed(1) + "%)：</strong> 利润受牛蛙批发市场波动影响较大，若遇到减产涨价，门店盈利空间会被迅速挤压。";
+                } else {
+                    verdictElem.className = "p-3 rounded-lg text-xs leading-relaxed font-medium bg-red-500/10 text-red-300 border border-red-500/20";
+                    verdictElem.innerHTML = "<strong>低毛利/预警区间 (" + grossMargin.toFixed(1) + "%)：</strong> 在扣除房租和人工后，门店极易面临亏损，可能迫使店家转向低质廉价货源。";
+                }
+            }
+
+            // Bind listeners
+            frogPriceInput.addEventListener('input', updateCalculator);
+            menuPriceInput.addEventListener('input', updateCalculator);
+            frogWeightInput.addEventListener('input', updateCalculator);
+            sauceCostInput.addEventListener('input', updateCalculator);
+
+            // Initial calculation
+            updateCalculator();
+        });
+    </script>
+</body>
+</html>
